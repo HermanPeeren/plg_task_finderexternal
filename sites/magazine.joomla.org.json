@@ -1,0 +1,32 @@
+{
+    "_comment": "Smart Search external site profile for the Joomla Community Magazine (a Joomla site). Its sitemap lists only a few pages, so the issues are crawled through their links; new articles also come from the feed. Use with tools/add-site-task.php, or copy the params into a new 'Smart Search: index external site' task.",
+    "title": "Smart Search: index magazine.joomla.org",
+    "params": {
+        "site_label": "Joomla Magazine",
+        "sitemaps": "",
+        "feeds": "https://magazine.joomla.org/?format=feed&type=rss",
+        "start_urls": "https://magazine.joomla.org/\nhttps://magazine.joomla.org/issues",
+        "max_depth": 6,
+        "scope": "^https://magazine\\.joomla\\.org/issues(/|\\?|$)",
+        "exclude": "// Feeds, print and component views, list filters, accounts, search, files\n[?&]format=\n[?&]print=\n[?&]tmpl=\n/component/\n/index\\.php\n[?&](limit|limitstart|filter|tag|lang)\\b\n/(tags?|authors?|search|login|register)(/|$|\\?)\n\\.(pdf|jpe?g|png|gif|zip)$",
+        "index_only": "^https://magazine\\.joomla\\.org/issues/\\d{4}/[^/?]+/[^/?]+$",
+        "content_selector": ".com-content-article__body",
+        "title_selector": ".page-header h1",
+        "remove_selectors": "",
+        "description_source": "content",
+        "date_selector": ".article-info time",
+        "author_selector": ".article-info .createdby a",
+        "category_selector": "",
+        "language": "*",
+        "access": 1,
+        "recheck_days": 30,
+        "request_delay": 500,
+        "respect_robots": 1,
+        "user_agent": "",
+        "time_budget": 20
+    },
+    "schedule": {
+        "interval": "hours",
+        "every": 6
+    }
+}

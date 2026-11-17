@@ -1,0 +1,32 @@
+{
+    "_comment": "Smart Search external site profile for the Joomla Programmers Manual (Docusaurus). Its sitemap lists the older versions and the update notes but not the current version (unversioned /docs/), so /docs/ is also crawled through its links. Use with tools/add-site-task.php, or copy the params into a new 'Smart Search: index external site' task.",
+    "title": "Smart Search: index manual.joomla.org",
+    "params": {
+        "site_label": "Joomla Manual",
+        "sitemaps": "https://manual.joomla.org/sitemap.xml",
+        "feeds": "",
+        "start_urls": "https://manual.joomla.org/docs/",
+        "max_depth": 10,
+        "scope": "^https://manual\\.joomla\\.org/(docs|updates)/",
+        "exclude": "// Older and upcoming versions: only the current one (unversioned /docs/) is indexed.\n/docs/(next|\\d+\\.\\d+)/",
+        "index_only": "",
+        "content_selector": ".theme-doc-markdown",
+        "title_selector": ".theme-doc-markdown h1",
+        "remove_selectors": ".hash-link\n.theme-doc-toc-mobile\n.theme-code-block button",
+        "description_source": "meta",
+        "date_selector": "",
+        "author_selector": "",
+        "category_selector": ".theme-doc-breadcrumbs a.breadcrumbs__link",
+        "language": "*",
+        "access": 1,
+        "recheck_days": 7,
+        "request_delay": 500,
+        "respect_robots": 1,
+        "user_agent": "",
+        "time_budget": 20
+    },
+    "schedule": {
+        "interval": "hours",
+        "every": 6
+    }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title>Dependency Injection | Example Documentation</title>
+<meta property="og:title" content="Dependency Injection | Example Documentation">
+<meta name="description" content="How services are put together in a container instead of being built where they are used.">
+<link rel="canonical" href="https://docs.example.org/docs/general-concepts/dependency-injection/">
+</head>
+<body>
+<nav class="navbar"><a href="/docs/">Docs</a> <a href="/docs/5.4/general-concepts/">Older version</a> <a href="https://github.com/example/docs">GitHub</a></nav>
+<main>
+<div class="container">
+<article>
+<nav class="theme-doc-breadcrumbs"><ul>
+<li><a class="breadcrumbs__link" href="/">Home</a></li>
+<li><a class="breadcrumbs__link" href="/docs/general-concepts/">General Concepts</a></li>
+<li><span class="breadcrumbs__link">Dependency Injection</span></li>
+</ul></nav>
+<span class="theme-doc-version-badge badge">Version: 6.2 (Current)</span>
+<div class="theme-doc-toc-mobile"><button>On this page</button></div>
+<div class="theme-doc-markdown markdown">
+<header><h1>Dependency Injection</h1></header>
+<p>A service container builds objects for you. You register how a service is made, and ask for it where you need it.</p>
+<h2 id="example">Example<a class="hash-link" href="#example">#</a></h2>
+<p>Register a service with <code>$container-&gt;share()</code>:</p>
+<pre><code>$container-&gt;share(Foo::class, fn () =&gt; new Foo());
+echo '&lt;div&gt;done&lt;/div&gt;';</code></pre>
+<ul><li>Shared services are built once.</li><li>Others are built on every <a href="../events/">request</a>.</li></ul>
+<table><tr><th>Method</th><th>Meaning</th></tr><tr><td>share</td><td>one instance</td></tr></table>
+<script>console.log('not text');</script>
+</div>
+<footer class="theme-doc-footer"><a href="https://github.com/example/docs/edit/main/di.md">Edit this page</a>
+<time datetime="2026-10-02T09:30:00.000Z">Oct 2, 2026</time></footer>
+</article>
+<nav class="pagination-nav"><a href="/docs/general-concepts/events/">Next: Events</a> <a rel="nofollow" href="/docs/private/">Hidden</a></nav>
+</div>
+</main>
+</body>
+</html>

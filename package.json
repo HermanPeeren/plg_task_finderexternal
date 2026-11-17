@@ -1,0 +1,13 @@
+{
+  "name": "finder-external",
+  "private": true,
+  "type": "module",
+  "description": "Cypress specs for the Smart Search external sites task plugin, run against the development Joomla in /joomla.",
+  "scripts": {
+    "cypress": "cypress run",
+    "cypress:open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^15.21.1"
+  }
+}

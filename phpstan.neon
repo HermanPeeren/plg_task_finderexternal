@@ -1,0 +1,42 @@
+includes:
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
+parameters:
+    # Level 8: array shapes and null handling, which is where code that reads
+    # other people's HTML and XML goes wrong.
+    level: 8
+
+    paths:
+        - src/plugins/task/finderexternal/src
+        - src/plugins/task/finderexternal/services
+        - src/script.php
+        - tests
+        - build
+        - tools
+
+    # Joomla is reference material: CMSPlugin, the scheduler's TaskPluginTrait,
+    # Smart Search's Indexer and Result, the database and HTTP classes. /joomla
+    # is git-ignored; see docs/development.md. CI fetches its own.
+    scanDirectories:
+        - joomla/libraries
+        - joomla/administrator/components
+
+    bootstrapFiles:
+        - tools/phpstan-bootstrap.php
+
+    excludePaths:
+        analyse:
+            - tests/cypress/*
+            - tests/Fixtures/*
+
+    ignoreErrors:
+        # DatabaseInterface::quoteName() is documented as `array|string`
+        # because it takes either and returns the same kind. Given one string it
+        # returns one string; the stores and the install script pass only strings.
+        -
+            message: '#(Parameter \#1 \$\w+ of method Joomla\\Database\\QueryInterface::(from|delete|update|insert|select|where|set|whereIn|whereNotIn)\(\) expects .+, array\|string given|Binary operation "\." between .*array\|string.* results in an error)#'
+            paths:
+                - src/plugins/task/finderexternal/src
+                - src/script.php
+
+    treatPhpDocTypesAsCertain: false
