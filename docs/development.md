@@ -115,7 +115,12 @@ php tools/add-site-task.php sites/manual.joomla.org.json
 php tools/add-site-task.php sites/magazine.joomla.org.json
 mkdir -p joomla/templates/cassiopeia/html/com_finder/search
 cp overrides/html/com_finder/search/default_external.php joomla/templates/cassiopeia/html/com_finder/search/
+mysql -uroot jlatest-finder-external -e "UPDATE jfe_guidedtours SET autostart = 0"
 ```
+
+The last line switches off the auto-start of Joomla's guided tours. On a fresh site the
+"Welcome to Joomla" tour starts by itself and takes the browser to the dashboard, which
+makes the Cypress specs land there instead of on the task form.
 
 Run the tasks from the command line, one at a time:
 
